@@ -1,66 +1,43 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/0e8bc812-685b-45cb-b8bd-e839c87ed706)
 
-## About Laravel
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/9c54ee57-1fc2-4dd1-8f44-87f8dd645955)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/b35ced15-d652-4ebc-946d-03764f4f52eb)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/a52950dc-b714-4cc4-83d8-dea5ffd14ca7)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/5c182ebb-1467-4834-bfa2-0dae91de3529)
 
-## Learning Laravel
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/85e8d04b-0a79-43fa-bd72-3053cb408d05)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/7fb02e72-8f0f-48ae-aee7-af02eb367713)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/9d4478f7-7a24-4e4e-a1fd-defc2bd5925c)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/7678566c-a5a5-4c36-8e76-07782538f2e3)
 
-## Laravel Sponsors
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/12c9a3c2-581c-4533-8c7a-3bc7f09b80ce)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/37d31b66-7ac3-4f58-b6cc-122dd74ef074)
 
-### Premium Partners
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/e08ff0b3-d7dc-457e-b26c-4f7a65a57257)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/998810dd-9aa8-46bc-80a3-48f1a1bcdc31)
 
-## Contributing
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/287afd89-bba9-4934-bfbd-c478e2d9cdbf)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/418757ab-0d88-4333-9fa2-d82898c6a46f)
 
-## Code of Conduct
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/78679f57-78c3-4e43-b9b4-0a0218b74b7f)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![image](https://github.com/kimmartelolives/laravel-e-commerce-website/assets/61133176/9fce2066-9d64-4045-9e11-cf9ed8459344)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
