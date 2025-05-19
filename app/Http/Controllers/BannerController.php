@@ -29,6 +29,7 @@ class BannerController extends Controller
             $request->file('banner_1')->storeAs('public/banner', $filenameToStore);
             $request->file("banner_1")->storeAs('public/banner/thumbnail', $smallThumbnail);
             $thumbnail = 'storage/banner/thumbnail/' . $smallThumbnail;
+            // $thumbnail = storage_path('app/public/user/thumbnail/' . $smallThumbnail);
             $this->createThumbnail($thumbnail, 150, 93);
 
             $addbanner['banner_1'] = $filenameToStore;
@@ -48,6 +49,7 @@ class BannerController extends Controller
             $request->file('banner_2')->storeAs('public/banner', $filenameToStore);
             $request->file("banner_2")->storeAs('public/banner/thumbnail', $smallThumbnail);
             $thumbnail = 'storage/banner/thumbnail/' . $smallThumbnail;
+            // $thumbnail = storage_path('app/public/user/thumbnail/' . $smallThumbnail);
             $this->createThumbnail($thumbnail, 150, 93);
 
             $addbanner['banner_2'] = $filenameToStore;
@@ -68,6 +70,7 @@ class BannerController extends Controller
             $request->file('banner_3')->storeAs('public/banner', $filenameToStore);
             $request->file("banner_3")->storeAs('public/banner/thumbnail', $smallThumbnail);
             $thumbnail = 'storage/banner/thumbnail/' . $smallThumbnail;
+            // $thumbnail = storage_path('app/public/user/thumbnail/' . $smallThumbnail);
             $this->createThumbnail($thumbnail, 150, 93);
 
             $addbanner['banner_3'] = $filenameToStore;
@@ -88,6 +91,7 @@ class BannerController extends Controller
             $request->file('banner_4')->storeAs('public/banner', $filenameToStore);
             $request->file("banner_4")->storeAs('public/banner/thumbnail', $smallThumbnail);
             $thumbnail = 'storage/banner/thumbnail/' . $smallThumbnail;
+            // $thumbnail = storage_path('app/public/user/thumbnail/' . $smallThumbnail);
             $this->createThumbnail($thumbnail, 150, 93);
 
             $addbanner['banner_4'] = $filenameToStore;
@@ -108,6 +112,7 @@ class BannerController extends Controller
             $request->file('banner_5')->storeAs('public/banner', $filenameToStore);
             $request->file("banner_5")->storeAs('public/banner/thumbnail', $smallThumbnail);
             $thumbnail = 'storage/banner/thumbnail/' . $smallThumbnail;
+            // $thumbnail = storage_path('app/public/user/thumbnail/' . $smallThumbnail);
             $this->createThumbnail($thumbnail, 150, 93);
 
             $addbanner['banner_5'] = $filenameToStore;
@@ -120,6 +125,10 @@ class BannerController extends Controller
     }
 
     public function createThumbnail($path, $width, $height){
+
+          if (!file_exists($path)) {
+        throw new \Exception("Image file not found: " . $path);
+    }
 
         $img = Image::make($path)->resize($width, $height, function($constraint){
             $constraint->aspectRatio();

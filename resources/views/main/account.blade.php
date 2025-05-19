@@ -89,7 +89,8 @@
                                     @csrf
                                     <div class="flex justify-center items-center my-4">
 
-                                        @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showAccount[0]->email.".svg" @endphp
+                                         @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($showAccount[0]->email); @endphp
+                                        {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showAccount[0]->email.".svg" @endphp --}}
                                         <td>
                                         <img class="rounded-full" width="150" height="150" src="{{ $showAccount[0]->dp_name ? asset("storage/user/".$showAccount[0]->dp_name) : $default_profile }}">
                                         </td>
@@ -209,5 +210,21 @@
         </div><!-- End .dashboard -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const hash = window.location.hash;
+        if (hash) {
+            const tabTrigger = document.querySelector(`a[data-toggle="tab"][href="${hash}"]`);
+            if (tabTrigger) {
+                $(tabTrigger).tab('show');
+            }
+        }
+    });
+</script>
+
+
+
+
 
 @include('partials.footer')

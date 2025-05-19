@@ -4,14 +4,14 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Olives PH</a></li>
-                        <li class="breadcrumb-item"><a href="#">Shop Now!</a></li>
+                        <li class="breadcrumb-item"><a href="#">PC Bulacan Computer Store </a></li>
                         <li class="breadcrumb-item active" aria-current="page">Login</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
 
-            <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('assets/images/backgrounds/login-bg.jpg')">
+   
+                <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('new/images/background.png')">
             	<div class="container">
             	
                     <div class="form-box">
@@ -55,11 +55,14 @@
                                             </button>
             
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="signin-remember">
+                                                <input type="checkbox" name="remember" class="custom-control-input" id="signin-remember">
                                                 <label class="custom-control-label" for="signin-remember">Remember Me</label>
                                             </div><!-- End .custom-checkbox -->
             
-                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
+                                            {{-- <a href="#" class="forgot-link">Forgot Your Password?</a> --}}
+                                           <a href="{{ route('password.request') }}" class="forgot-link">Forgot Your Password?</a>
+
+
                                         </div><!-- End .form-footer -->
                                     </form>
             

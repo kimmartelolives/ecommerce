@@ -49,7 +49,8 @@
                                 <span class="product-label label-out">Out of stock.</span>
                                 @endif
                                 <a href="/view/{{ $LaptopProduct->id }}">
-                                    @php $default_profile = "https://avatars.dicebear.com/api/initials/".$LaptopProduct->product_name.".svg" @endphp  
+                                    @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($LaptopProduct->product_name); @endphp
+                                    {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$LaptopProduct->product_name.".svg" @endphp   --}}
                                     <img src="{{ $LaptopProduct->product_image ? asset("storage/product/".$LaptopProduct->product_image) : $default_profile }}">
                                 </a>
 

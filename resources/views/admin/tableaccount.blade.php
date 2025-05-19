@@ -27,7 +27,9 @@
             <tbody>
                 @foreach ($showAccount as $account)
                 <tr class="border-b text-black">
-                    @php $default_profile = "https://avatars.dicebear.com/api/initials/".$account->email.".svg" @endphp  
+                       @php
+        $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($account->email);
+    @endphp
                     <td>
                         <img src="{{ $account->dp_name ? asset("storage/user/thumbnail/".$account->dp_name) : $default_profile }}">
                     </td>

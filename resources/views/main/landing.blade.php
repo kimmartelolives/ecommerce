@@ -19,22 +19,22 @@
                                     <div class="intro-slide">
                                         <figure class="slide-image">
                                             <picture>
-                                                @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_1.".svg" @endphp  
+                                                @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($showBanner[0]->banner_1); @endphp
+                                                {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_1.".svg" @endphp   --}}
                                                 <source media="(max-width: 480px)" srcset="{{ $showBanner[0]->banner_1 ? asset("storage/banner/".$showBanner[0]->banner_1) : $default_profile }}">
-                                                <img src="{{ $showBanner[0]->banner_1 ? asset("storage/banner/".$showBanner[0]->banner_1) : $default_profile }}" alt="Image Desc">
+                                                <img src="{{ $showBanner[0]->banner_1 ? asset("storage/banner/".$showBanner[0]->banner_1) : $default_profile }}" style="width: 780px; height: 400px; object-fit: cover;" alt="Image Desc">
                                             </picture>
                                         </figure><!-- End .slide-image -->
 
                                         <div class="intro-content">
-                                            <h3 class="intro-subtitle text-primary">Daily Deals</h3><!-- End .h3 intro-subtitle -->
-                                            <h1 class="intro-title">
-                                                Come <br>Online Shop
-                                            </h1><!-- End .intro-title -->
+                                            <h3 class="intro-subtitle text-primary" style="text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Daily Deals</h3><!-- End .h3 intro-subtitle -->
+                                       <h1 class="intro-title text-white" style="text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">
+                                            Come <br>Online Shop
+                                        </h1>
 
-                                            <div class="intro-price">
-                                                <sup>Now!</sup>
-                                                
-                                            </div><!-- End .intro-price -->
+                                        <div class="intro-price text-white" style="text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">
+                                            <sup>Now!</sup>
+                                        </div>
 
                                             <a href="/view/all" class="btn btn-primary btn-round">
                                                 <span>Browse</span>
@@ -53,13 +53,14 @@
                             <div class="intro-banners">
                                 <div class="banner mb-lg-1 mb-xl-2">
                                     <a href="#">
-                                        @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_2.".svg" @endphp  
-                                        <img src="{{ $showBanner[0]->banner_2 ? asset("storage/banner/".$showBanner[0]->banner_2) : $default_profile }}" alt="Image Desc">
+                                        @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($showBanner[0]->banner_2); @endphp
+                                        {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_2.".svg" @endphp   --}}
+                                        <img src="{{ $showBanner[0]->banner_2 ? asset("storage/banner/".$showBanner[0]->banner_2) : $default_profile }}" style="width: 370px; height: 120px; object-fit: cover;" alt="Image Desc">
                                             
                                     </a>
 
                                     <div class="banner-content">
-                                        <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">Top Product</a></h4><!-- End .banner-subtitle -->
+                                        <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#" style="color: white;">Top Product</a></h4><!-- End .banner-subtitle -->
                                         <h3 class="banner-title"><a href="#">Quality <br>and Affordable</a></h3><!-- End .banner-title -->
                                         <a href="/view/all" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
@@ -67,27 +68,29 @@
 
                                 <div class="banner mb-lg-1 mb-xl-2">
                                     <a href="#">
-                                        @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_3.".svg" @endphp  
-                                        <img src="{{ $showBanner[0]->banner_3 ? asset("storage/banner/".$showBanner[0]->banner_3) : $default_profile }}" alt="Image Desc">
+                                        @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($showBanner[0]->banner_3); @endphp
+                                        {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_3.".svg" @endphp   --}}
+                                        <img src="{{ $showBanner[0]->banner_3 ? asset("storage/banner/".$showBanner[0]->banner_3) : $default_profile }}" style="width: 370px; height: 120px; object-fit: cover;" alt="Image Desc">
                                     </a>
 
                                     <div class="banner-content">
-                                        <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">Clearance</a></h4><!-- End .banner-subtitle -->
-                                        <h3 class="banner-title"><a href="#">Shop <span>at HOME</span></a></h3><!-- End .banner-title -->
+                                        <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#" style="color: white;">Clearance</a></h4><!-- End .banner-subtitle -->
+                                        <h3 class="banner-title"><a href="#">Shop <br>at Home</a></h3><!-- End .banner-title -->
                                         <a href="/view/all" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner -->
 
                                 <div class="banner mb-0">
                                     <a href="#">
-                                        @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_4.".svg" @endphp  
-                                        <img src="{{ $showBanner[0]->banner_4 ? asset("storage/banner/".$showBanner[0]->banner_4) : $default_profile }}" alt="Image Desc">
+                                        @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($showBanner[0]->banner_4); @endphp
+                                        {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_4.".svg" @endphp   --}}
+                                        <img src="{{ $showBanner[0]->banner_4 ? asset("storage/banner/".$showBanner[0]->banner_4) : $default_profile }}" style="width: 370px; height: 120px; object-fit: cover;" alt="Image Desc">
                                     
                                     </a>
 
                                     <div class="banner-content">
-                                        <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">Featured</a></h4><!-- End .banner-subtitle -->
-                                        <h3 class="banner-title"><a href="#">Browse <span>Our Hottest Deals</span></a></h3><!-- End .banner-title -->
+                                        <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#" style="color: white;">Featured</a></h4><!-- End .banner-subtitle -->
+                                        <h3 class="banner-title"><a href="#">Browse <br>Our Hottest Deals</a></h3>
                                         <a href="/view/all" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
                                     </div><!-- End .banner-content -->
                                 </div><!-- End .banner -->
@@ -139,7 +142,7 @@
                         <div class="banner">
                             <a href="#">
                                 @php $default_profile = "https://avatars.dicebear.com/api/initials/".$showBanner[0]->banner_5.".svg" @endphp  
-                                <img src="{{ $showBanner[0]->banner_5 ? asset("storage/banner/".$showBanner[0]->banner_5) : $default_profile }}" alt="Image Desc">
+                                <img src="{{ $showBanner[0]->banner_5 ? asset("storage/banner/".$showBanner[0]->banner_5) : $default_profile }}" style="width: 218px; height: 390px; object-fit: cover;" alt="Image Desc">
                             </a>
                         </div><!-- End .banner -->
                     </div><!-- End .col-xl-5col -->

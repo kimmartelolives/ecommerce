@@ -43,7 +43,8 @@
 												<div class="product">
 													<figure class="product-media">
 														<a href="#">
-															@php $default_profile = "https://avatars.dicebear.com/api/initials/".$cart->product_name.".svg" @endphp  
+															@php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($cart->product_name); @endphp
+															{{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$cart->product_name.".svg" @endphp   --}}
 															<img src="{{ $cart->product_image ? asset("storage/product/".$cart->product_image) : $default_profile }}">
 														</a>
 													</figure>

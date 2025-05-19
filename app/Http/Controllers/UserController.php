@@ -128,7 +128,9 @@ class UserController extends Controller
             'password' => 'required',           
         ]);
 
-        if(auth()->attempt($login)){
+        $remember = $request->has('remember');
+
+        if(auth()->attempt($login, $remember)){
 
             $request->session()->regenerate();
             return redirect('/');
@@ -157,14 +159,21 @@ class UserController extends Controller
         $addaccount['password'] = bcrypt($addaccount['password']);
 
         User::create($addaccount);
-        return back()->with('message', 'New Account was successfully added!');
+        // return back()->with('message', 'New Account was successfully added!');
 
+          return redirect()->to(url()->previous() . '#tab-accounts')
+    ->with('message', 'New Account was successfully added!');
+        
+     
     }
 
     public function deleteaccount(User $user){
 
         $user->delete();
-        return back()->with('message', 'Account was successfully removed!');
+        // return back()->with('message', 'Account was successfully removed!');
+
+         return redirect()->to(url()->previous() . '#tab-accounts')
+        ->with('message', 'Account was successfully removed!');
     }
 
     public function showaccount($id){
@@ -215,17 +224,26 @@ class UserController extends Controller
             $smallThumbnail = $filename .'_'.time().'.'.$extension;
             $request->file('dp_name')->storeAs('public/user', $filenameToStore);
             $request->file("dp_name")->storeAs('public/user/thumbnail', $smallThumbnail);
-            $thumbnail = 'storage/user/thumbnail/' . $smallThumbnail;
+            // $thumbnail = 'storage/user/thumbnail/' . $smallThumbnail;
+            $thumbnail = public_path('storage/user/thumbnail/' . $smallThumbnail);
+
             $this->createThumbnail($thumbnail, 150, 93);
 
             $updateaccount['dp_name'] = $filenameToStore;
         }
 
         $user->update($updateaccount);
-        return back()->with('message', 'Account was successfully updated!');
+        // return back()->with('message', 'Account was successfully updated!');
+
+        return redirect()->to(url()->previous() . '#tab-accounts')
+        ->with('message', 'Account was successfully removed!');
     }
 
     public function createThumbnail($path, $width, $height){
+
+        if (!file_exists($path)) {
+        throw new \Exception("Image file not found: " . $path);
+    }
 
         $img = Image::make($path)->resize($width, $height, function($constraint){
             $constraint->aspectRatio();
@@ -237,17 +255,22 @@ class UserController extends Controller
     public function customerupdateaccount(Request $request, User $user){
 
         $updateaccount = $request->validate([
-            "first_name" => [''],
-            "last_name" => [''],
-            "email" => ['required'],
-            "full_address" => [''],
-            "country" => [''],
-            "postal_code" => [''],
-            "phone" => [''],
-            'password' => 'confirmed',
+            "first_name" => ['nullable'],
+            "last_name" => ['nullable'],
+            "email" => ['required', 'email'],
+            "full_address" => ['nullable'],
+            "country" => ['nullable'],
+            "postal_code" => ['nullable'],
+            "phone" => ['nullable'],
+            'password' => ['nullable', 'confirmed'],
         ]);
 
-        $updateaccount['password'] = bcrypt($updateaccount['password']);
+        // Only hash password if it's not empty in the request
+        if ($request->filled('password')) {
+            $updateaccount['password'] = bcrypt($request->input('password'));
+        } else {
+            unset($updateaccount['password']); // Prevent overriding with null or empty string
+        }
 
         if($request->hasFile('dp_name')){
            
@@ -270,7 +293,12 @@ class UserController extends Controller
 
         $user->update($updateaccount);
 
-        return back()->with('message', 'Account was successfully updated!');
+        // return back()->with('message', 'Account was successfully updated!');
+       return redirect()->to(url()->previous() . '#tab-account')
+    ->with('message', 'Account was successfully updated!');
+
+
+
     }
 
 

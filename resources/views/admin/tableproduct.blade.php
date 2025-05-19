@@ -27,7 +27,8 @@
             <tbody>
                 @foreach ($showProduct as $product)
                 <tr class="border-b text-black">
-                    @php $default_profile = "https://avatars.dicebear.com/api/initials/".$product->product_name.".svg" @endphp  
+                    {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$product->product_name.".svg" @endphp   --}}
+                       @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($product->product_name); @endphp
                     <td>
                         <img src="{{ $product->product_image ? asset("storage/product/thumbnail/".$product->product_image) : $default_profile }}">
                     </td>

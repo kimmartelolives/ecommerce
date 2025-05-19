@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Olives PH | Shop Online Now</title>
+    <title>PC Bulacan Computer Store  | Shop Online Now</title>
     <meta name="description" content="Olives PH | Shop Online Now">
     <meta name="author" content="p-themes">
     @vite('resources/css/app.css')
@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="/assets/css/plugins/jquery.countdown.css">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/skins/skin-demo-3.css">
+    <link rel="stylesheet" href="/assets/css/skins/skin-demo-2.css?v={{ time() }}">
+
     <link rel="stylesheet" href="/assets/css/demos/demo-3.css">
 </head>
 
@@ -54,8 +55,8 @@
                             <li>
                                 <a href="#">Links</a>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Contact Us</a>
+                                    <li><a href="https://www.facebook.com/Tmacsportswearandprinting" target="_blank">About Us</a></li>
+                                    <li><a href="https://www.facebook.com/Tmacsportswearandprinting" target="_blank">Contact Us</a>
                                     
                                     @if (Auth::user() == NULL)
 
@@ -107,7 +108,7 @@
                         </button>
 
                         <a href="/" class="logo">
-                            <img src="/assets/pic/logo.png" alt="Molla Logo" width="105" height="25">
+                            <img src="/new/images/logo.png" alt="PC Bulacan" width="105" height="25">
                         </a>
 
                         <nav class="main-nav">
@@ -142,15 +143,21 @@
                     </div><!-- End .header-left -->
                     
                     <div class="header-right">
-                        <div class="header-search">
-                            <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
-                            <form action="#" method="get">
-                                <div class="header-search-wrapper">
-                                    <label for="q" class="sr-only">Search</label>
-                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search in..." required>
-                                </div><!-- End .header-search-wrapper -->
-                            </form>
-                        </div><!-- End .header-search -->                   
+                     <div class="header-search">
+                        <a href="#" class="search-toggle" role="button" title="Search">
+                            <i class="icon-search"></i>
+                        </a>
+                        <form action="/search" method="GET">
+                            @csrf
+                           
+                            <div class="header-search-wrapper">
+                                <label for="product" class="sr-only">Search</label>
+                                <input type="search" class="form-control" name="product" id="product" placeholder="Search product" required>
+                                
+                            </div>
+                        </form>
+                    </div>
+            
                         
                   
 

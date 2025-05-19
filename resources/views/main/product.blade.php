@@ -4,12 +4,35 @@
                 <div class="container d-flex align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">{{ $viewproduct->category }}</a></li>
+
+
+                        <li class="breadcrumb-item">
+
+                             @if($viewproduct->category == "Graphics Card")
+                            <a href="/view/gpu">{{ $viewproduct->category }}</a>
+
+                            @elseif($viewproduct->category == "Laptop")
+                            <a href="/view/laptop">{{ $viewproduct->category }}</a>
+
+                            @elseif($viewproduct->category == "Processor")
+                            <a href="/view/processor">{{ $viewproduct->category }}</a>
+
+                            @elseif($viewproduct->category == "Power Supply")
+                            <a href="/view/psu">{{ $viewproduct->category }}</a>
+
+                            @else
+                            
+                            @endif
+                        
+                        </li>
+                                           
+
+
                         <li class="breadcrumb-item active" aria-current="page">{{ $viewproduct->product_name }}</li>
                     </ol>
 
-                </div><!-- End .container -->
-            </nav><!-- End .breadcrumb-nav -->
+                </div>
+            </nav>
 
             <div class="page-content">
                 <div class="container">
@@ -19,17 +42,19 @@
                                 <div class="product-gallery product-gallery-vertical">
                                     <div class="row">
                                         <figure class="product-main-image">
-                                            @php $default_profile = "https://avatars.dicebear.com/api/initials/".$viewproduct->product_name.".svg" @endphp  
+                                            @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($viewproduct->product_name); @endphp
+                                            {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$viewproduct->product_name.".svg" @endphp   --}}
                                             <img src="{{ $viewproduct->product_image ? asset("storage/product/".$viewproduct->product_image) : $default_profile }}">       
 
                                             <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                                 <i class="icon-arrows"></i>
                                             </a>
-                                        </figure><!-- End .product-main-image -->
+                                        </figure>
 
                                         <div id="product-zoom-gallery" class="product-image-gallery">
                                             <a class="product-gallery-item active" href="#" data-image="{{ $viewproduct->product_image ? asset("storage/product/".$viewproduct->product_image) : $default_profile }}" data-zoom-image="assets/images/products/single/1-big.jpg">
-                                                @php $default_profile = "https://avatars.dicebear.com/api/initials/".$viewproduct->product_name.".svg" @endphp  
+                                                @php $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($viewproduct->product_name); @endphp
+                                                {{-- @php $default_profile = "https://avatars.dicebear.com/api/initials/".$viewproduct->product_name.".svg" @endphp   --}}
                                                 <img src="{{ $viewproduct->product_image ? asset("storage/product/".$viewproduct->product_image) : $default_profile }}">
                                             </a>
 
@@ -148,6 +173,33 @@
                 </div><!-- End .container -->
             </div><!-- End .page-content -->
         </main><!-- End .main -->
+
+        <!-- Product Image Modal -->
+<div class="modal fade" id="productImageModal" tabindex="-1" role="dialog" aria-labelledby="productImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-body text-center">
+        <img id="modalProductImage" src="" class="img-fluid" alt="Product Image">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const galleryBtn = document.getElementById('btn-product-gallery');
+        const modalImg = document.getElementById('modalProductImage');
+        const imageSrc = `{{ $viewproduct->product_image ? asset('storage/product/' . $viewproduct->product_image) : $default_profile }}`;
+
+        galleryBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            modalImg.src = imageSrc;
+            $('#productImageModal').modal('show');
+        });
+    });
+</script>
+
 
 @include('partials.footer')
 

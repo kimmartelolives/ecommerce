@@ -40,7 +40,9 @@
                                     
                                 <div class="flex justify-center items-center my-4">
 
-                                    @php $default_profile = "https://avatars.dicebear.com/api/initials/".$account->email.".svg" @endphp
+                                       @php
+                                            $default_profile = "https://api.dicebear.com/8.x/initials/svg?seed=" . urlencode($account->email);
+                                        @endphp
                                     <td>
                                     <img class="rounded-full" width="150" height="150" src="{{ $account->dp_name ? asset("storage/user/".$account->dp_name) : $default_profile }}">
                                     </td>

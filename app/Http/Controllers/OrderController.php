@@ -72,11 +72,24 @@ class OrderController extends Controller
         ->count();
 
         $order = DB::table('orders')
-        ->select('*')
+        ->join('products', 'orders.product_id', 'products.id')
+        ->select('orders.*', 'products.*')
+        ->where('orders.unique_token', $token)
+        ->get();
+
+        $date = DB::table('orders')
+        ->select('created_at')
         ->where('unique_token', $token)
         ->get();
 
-        return view('main.vieworder', ['order' => $order, 'showCart' => $showCart, 'sumCart' => $sumCart, 'countCart' => $countCart]);
+        $total_price = DB::table('orders')
+        ->where('unique_token', $token)
+        ->selectRaw('SUM(product_total_price * product_total_quantity) as total')
+        ->value('total');
+        
+        $total = $total_price + 100;
+
+        return view('main.vieworder', ['order' => $order, 'showCart' => $showCart, 'sumCart' => $sumCart, 'countCart' => $countCart, 'total' => $total, 'date' => $date]);
 
     }
 
@@ -91,6 +104,9 @@ class OrderController extends Controller
         ->where('unique_token', $token)
         ->update($updatecart);
 
-        return back()->with('message', 'Orders was successfully shipped!');
+        // return back()->with('message', 'Orders was successfully shipped!');
+
+         return redirect()->to(url()->previous() . '#tab-orders')
+        ->with('message', 'Orders was successfully shipped!');
     }
 }

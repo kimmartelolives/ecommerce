@@ -6,9 +6,9 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -54,18 +54,18 @@ class ProductController extends Controller
                
     }
 
-    public function addproduct(Request $request){
+    public function addproduct(Request $request)
+{
+    $addproduct = $request->validate([
+        "product_name" => ['required'],
+        "price" => ['required'],
+        "category" => ['required'],
+        "quantity" => ['required'],
+        "overview" => ['required'],
+        "description" => ['required'],
+    ]);
 
-        $addproduct = $request->validate([
-            "product_name" => ['required'],
-            "price" => ['required'],
-            "category" => ['required'],
-            "quantity" => ['required'],
-            "overview" => ['required'],
-            "description" => ['required'],
-        ]);
-
-        if($request->hasFile('product_image')){
+    if($request->hasFile('product_image')){
            
             $request->validate([
                 "product_image" => 'mimes:jpeg,jpg,png,bmp,tiff,webp |max:10096'
@@ -84,10 +84,13 @@ class ProductController extends Controller
             $addproduct['product_image'] = $filenameToStore;
         }
 
-        Product::create($addproduct);
-        return back()->with('message', 'New Product was successfully added!');
+    Product::create($addproduct);
+    // return back()->with('message', 'New Product was successfully added!');
 
-    }
+     return redirect()->to(url()->previous() . '#tab-products')
+    ->with('message', 'New Product was successfully added!');
+}
+
 
     public function createThumbnail($path, $width, $height){
 
@@ -101,7 +104,10 @@ class ProductController extends Controller
     public function deleteproduct(Product $product){
 
         $product->delete();
-        return back()->with('message', 'Product was successfully removed!');
+        // return back()->with('message', 'Product was successfully removed!');
+
+        return redirect()->to(url()->previous() . '#tab-products')
+        ->with('message', 'Orders was successfully shipped!');
     }
     
     public function showproduct($id){
@@ -314,7 +320,45 @@ class ProductController extends Controller
         }
 
         $product->update($updateproduct);
-        return back()->with('message', 'New Product was successfully updated!');
+        // return back()->with('message', 'New Product was successfully updated!');
+
+        
+        return redirect()->to(url()->previous() . '#tab-products')
+        ->with('message', 'New Product was successfully updated');
+    }
+
+
+    public function searchproduct(Request $request)
+    {
+
+    $query = $request->input('product');
+
+    $products = Product::where('product_name', 'like', '%' . $query . '%')
+        ->orderBy('updated_at', 'desc')
+        ->simplePaginate(8);
+
+
+
+    
+        $user_id = Auth::user()->id;
+
+        $showCart = DB::table('carts')
+        ->join('products', 'carts.product_id', 'products.id')
+        ->select('carts.*', 'products.*')
+        ->where('carts.user_id', $user_id)
+        ->get();
+
+        $sumCart = DB::table('carts')
+        ->where('user_id', $user_id)
+        ->sum('product_total_price');
+
+        $countCart = DB::table('carts')
+        ->where('user_id', $user_id)
+        ->count();
+
+
+    return view('main.searchproduct', ['query' => $query,'products' => $products, 'showCart' => $showCart, 'sumCart' => $sumCart, 'countCart' => $countCart]);
+
     }
    
 }

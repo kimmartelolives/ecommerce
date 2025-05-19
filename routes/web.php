@@ -6,6 +6,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,11 +49,12 @@ Route::get('/view/processor', [ProductController::class, 'viewprocessorproduct']
 Route::get('/view/gpu', [ProductController::class, 'viewgpuproduct']);
 Route::get('/view/psu', [ProductController::class, 'viewpsuproduct']);
 Route::get('/view/{product}', [ProductController::class, 'viewproduct']);
+Route::get('/search', [ProductController::class, 'searchproduct']);
 
 
 Route::get('/cart/{product}', [CartController::class, 'addcart']);
-Route::post('/view/cart/add', [CartController::class, 'addproductcart']);
-Route::get('/cart/delete/{cart}', [CartController::class, 'deletecartproduct']);
+Route::post('/view/cart/add', [CartController::class, 'addproductcart']); 
+Route::get('/cart/delete/{cart}', [CartController::class, 'deletecartproduct']);    
 Route::get('/cart', [CartController::class, 'viewcart']);
 Route::get('/cart/products/checkout', [CartController::class, 'checkoutcart']);
 Route::post('/cart/new/update', [CartController::class, 'addcartupdate']);
@@ -67,3 +70,10 @@ Route::get('/admin/account/{user}', [UserController::class, 'showaccount']);
 Route::put('/admin/account/{user}', [UserController::class, 'updateaccount']);
 
 Route::put('/admin/addbanner/{banner}', [BannerController::class, 'addbanner']);
+
+
+Route::get('password/forgot', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
