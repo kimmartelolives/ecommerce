@@ -35,6 +35,16 @@
     <link rel="stylesheet" href="/assets/css/demos/demo-3.css">
 </head>
 
+<style>
+  /* Hide this on screens smaller than 768px */
+  @media (max-width: 767px) {
+    .desktop-only {
+      display: none !important;
+    }
+  }
+</style>
+
+
 <body>
     <div class="page-wrapper">
         <header class="header">
@@ -48,54 +58,51 @@
                             
                         </div><!-- End .header-dropdown -->
                     </div><!-- End .header-left -->
-                    
-                    <div class="header-right">
-                        <ul class="top-menu">
-                           
-                            <li>
-                                <a href="#">Links</a>
-                                <ul>
-                                    <li><a href="https://www.facebook.com/Tmacsportswearandprinting" target="_blank">About Us</a></li>
-                                    <li><a href="https://www.facebook.com/Tmacsportswearandprinting" target="_blank">Contact Us</a>
-                                    
-                                    @if (Auth::user() == NULL)
+            <div class="header-right">
+                    <ul class="top-menu">
+                        <li>
+                            <a href="#">Links</a>
+                            <ul>
+                                <li><a href="https://www.facebook.com/Tmacsportswearandprinting" target="_blank">About Us</a></li>
+                                <li><a href="https://www.facebook.com/Tmacsportswearandprinting" target="_blank">Contact Us</a></li>
 
-                                    @else
+                                  @if (Auth::user() == NULL)
+
+                                  @else
                                     @if (Auth::user()->email == TRUE)
-                                    <li></li>
-                                    <div class="header-dropdown">
-                                        <a href="#"><i class="icon-user"></i>{{ Auth::user()->email }}</a>
-                                        <div class="header-menu">
-                                            <ul>
-                                                <li><a href="/account">My Account</a></li>
-                                                
-                                                @if (Auth::user()->role == '1') 
+                                        <div class="desktop-only"> 
+                                            <div class="header-dropdown">
+                                                <a href="#"><i class="icon-user"></i>{{ Auth::user()->email }}</a>
+                                                <div class="header-menu">
+                                                    <ul>
+                                                        <li><a href="/account">My Account</a></li>
+                                                        @if (Auth::user()->role == '1')
+                                                            <li><a href="/admin">Admin Settings</a></li>
+                                                        @endif
 
-                                                <li></li>
-                                                <li><a href="/admin">Admin Settings</a></li>
-
-                                                <li></li>
-                                                @endif
-                                               
-                                                <form action="/logout" method="POST">
-                                                @csrf
-                                                <li></li>
-                                                <li><button type="submit">LOGOUT</button></li>
-                                                </form>
-
-                                            </ul>
-                                     </div>
-                                    </div>
-                                                                     
-                                    
+                                                        <li>
+                                                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                                                @csrf
+                                                            </form>
+                                                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                                Logout
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     @else
-                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
+                                        <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
                                     @endif
-                                   
-                                </ul>
-                            </li>
-                        </ul><!-- End .top-menu -->
-                    </div><!-- End .header-right -->
+                                    
+                            
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
                 </div><!-- End .container -->
             </div><!-- End .header-top -->
 
@@ -157,6 +164,12 @@
                             </div>
                         </form>
                     </div>
+
+
+                    
+
+
+
             
                         
                   

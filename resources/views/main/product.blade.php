@@ -1,3 +1,51 @@
+<style>
+  /* Dark backdrop */
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Modal dialog full screen & center content */
+  #productImageModal .modal-dialog {
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Modal content no padding, transparent bg */
+  #productImageModal .modal-content {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Image fills modal exactly */
+  #modalProductImage {
+    width: 100vw !important;
+    height: auto;
+    max-height: 100vh !important;
+    object-fit: contain;
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Prevent body scroll when modal open */
+  body.modal-open {
+    overflow: hidden !important;
+  }
+</style>
+
+
 @include('partials.header')
         <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -187,17 +235,27 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const galleryBtn = document.getElementById('btn-product-gallery');
-        const modalImg = document.getElementById('modalProductImage');
-        const imageSrc = `{{ $viewproduct->product_image ? asset('storage/product/' . $viewproduct->product_image) : $default_profile }}`;
+  document.addEventListener('DOMContentLoaded', function () {
+    const galleryBtn = document.getElementById('btn-product-gallery');
+    const modalImg = document.getElementById('modalProductImage');
+    const modal = $('#productImageModal');
 
-        galleryBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            modalImg.src = imageSrc;
-            $('#productImageModal').modal('show');
-        });
+    // Your image source (Blade or static URL)
+    const imageSrc = `{{ $viewproduct->product_image ? asset('storage/product/' . $viewproduct->product_image) : $default_profile }}`;
+
+    galleryBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      modalImg.src = imageSrc;
+      modal.modal('show');
     });
+
+    // Close modal when clicking on the image or outside (modal backdrop)
+    modalImg.addEventListener('click', () => {
+      modal.modal('hide');
+    });
+
+    // Optional: Bootstrap modal by default closes when clicking backdrop, so no extra code needed.
+  });
 </script>
 
 

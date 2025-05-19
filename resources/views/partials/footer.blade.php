@@ -1,27 +1,82 @@
+<style>
+.footer-middle {
+    padding: 40px 0;
+}
+
+.footer-middle .row {
+    justify-content: center;
+}
+
+.footer-middle .widget-about {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.footer-middle .widget-about p {
+    text-align: justify;
+    margin-top: 15px;
+}
+
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: center; /* Center the text */
+    font-size: 14px;
+    color: #555;
+}
+
+.footer-contact li {
+    margin-bottom: 8px;
+}
+
+.footer-middle .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+</style>
+
+
 <footer class="footer">
-    <div class="footer-middle">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-lg-3">
-                    <div class="widget widget-about">
-                        <img src="/new/images/logo.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
-                        <p>The true effortless shopping experience always begins with PC Bulacan, since everything you want, 
-                            whether it is fast service or the best products at the lowest prices.</p>
+<div class="footer-middle">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-lg-6">
+                <div class="widget widget-about">
+                    <img src="/new/images/logo.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
 
-                        <div class="social-icons">
-                            <a href="https://www.facebook.com/pcbulacan" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                            <a href="https://x.com/kimmartelolives" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                            <a href="https://www.instagram.com/pcbulacan/" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                            <a href="https://www.youtube.com/channel/UCFPrmqCzs0YXA1nEYZbXlDQ" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-                        </div><!-- End .soial-icons -->
-                    </div><!-- End .widget about-widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
+                    <p>At PC Bulacan, we don’t just sell computers — we empower your digital life with the latest technology, reliable products, and unbeatable service to keep you connected, productive, and entertained every day.</p>
 
-              
+                    <!-- Contact Info Block -->
+                   <ul class="footer-contact">
+    <li><i class="icon-map-marker"></i> <strong>Location:</strong> MC Arthur Highway, Brgy. Longos, Malolos, Bulacan</li>
+    <li><i class="icon-phone"></i> <strong>Phone:</strong> (044) 123-4567 / +63 912 345 6789</li>
+    <li><i class="icon-clock-o"></i> <strong>Store Hours:</strong> Mon–Sat: 9:00 AM – 5:00 PM</li>
+</ul>
 
-            </div><!-- End .row -->
-        </div><!-- End .container -->
-    </div><!-- End .footer-middle -->
+
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/pcbulacan" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                        <a href="https://x.com/kimmartelolives" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                        <a href="https://www.instagram.com/pcbulacan/" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UCFPrmqCzs0YXA1nEYZbXlDQ" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
     <div class="footer-bottom">
         <div class="container">
@@ -52,6 +107,32 @@
     
     <nav class="mobile-nav">
         <ul class="mobile-menu">
+            <li>
+                  @if (Auth::check() && Auth::user()->email)
+        <a href="#">{{ Auth::user()->email }}</a>
+        <ul>
+            @if (Auth::user()->role == '1') 
+                <li>
+                    <a href="/admin">Admin Dashboard</a>
+                </li>
+            @endif
+            <li>
+                <a href="/account">My Account</a>
+            </li>
+            <li>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+            </li>
+        </ul>
+
+        <!-- Hidden logout form -->
+        <form id="logout-form" action="/logout" method="POST" style="display: none;">
+            @csrf
+        </form>
+    @endif
+            </li>
+
             <li class="active">
                 <a href="/">Home</a>
             </li>
